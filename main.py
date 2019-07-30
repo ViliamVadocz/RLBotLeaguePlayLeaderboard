@@ -49,7 +49,7 @@ bot_y_offset = 210
 
 # Offsets for the symbols from the bot name position.
 sym_x_offset = 1300
-sym_y_offset = 0
+sym_y_offset = 5
 
 # Incremenets for x and y.
 div_x_incr = 1790
