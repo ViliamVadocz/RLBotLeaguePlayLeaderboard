@@ -16,8 +16,8 @@ Gibbus
 Skybot
 Kamael
 Psyonix Pro
-Adversity Bot
-Psyonix Pro
+AdversityBot
+Boolean Algebra Calf
 JoeyBot
 Anarchy
 NatureBot V1
