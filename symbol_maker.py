@@ -11,19 +11,19 @@ symbols = {
     'played':   (Image.open('template/played.png'), 'Played, but not moved'),
 }
 
-
+# Colour scheme for each division.
 colour_scheme = {
     # Division: ((light_theme), (dark_theme))
+    'Quantum':      ((218,139,249),(134, 69,160)),
+    'Overclocked':  ((210,110,125),(183, 51, 62)),
+    'Processor':    ((105,195,205),( 28,129,142)),
+    'Circuit':      ((134,247,131),( 61,150, 58)),
+    'Transistor':   ((249,240,102),(193,183, 42)),
     'Abacus':       ((139,108,216),( 85, 61,143)),
     'Babbage':      ((204,118,131),(137, 37, 52)),
-    'Circuit':      ((134,247,131),( 61,150, 58)),
     'Colossus':     ((107,161,206),( 49,102,146)),
     'Dragon':       ((129,211,129),( 48,116, 48)),
-    'ENIAC':        ((255,227,135),(183,159, 78)),
-    'Overclocked':  ((204,100,105),(183, 51, 62)),
-    'Processor':    (( 99,188,198),( 28,129,142)),
-    'Quantum':      ((218,139,249),(134, 69,160)),
-    'Transistor':   ((249,240,102),(193,183, 42))
+    'ENIAC':        ((255,227,135),(183,159, 78)) 
 }
 
 # Creates symbols.

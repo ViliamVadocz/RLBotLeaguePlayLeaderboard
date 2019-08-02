@@ -1,4 +1,11 @@
+'''Generates the leader-board.'''
+
 from PIL import Image, ImageDraw, ImageFont
+from symbol_maker import colour_scheme
+
+# ---------------------------------------------------------------
+
+# LOADING STANDINGS:
 
 # Getting previous week's standings from text file.
 previous_txt = open('previous_week.txt', 'r')
@@ -13,6 +20,10 @@ current = []
 for line in current_txt:
     current.append(line.strip())
 current_txt.close
+
+# ---------------------------------------------------------------
+
+# SYMBOL SUBLISTS:
 
 # Creates lists to track which bots moved or which are new.
 new_bots = []
@@ -40,7 +51,9 @@ even = (int(input('Last week number: ')) + 1) % 2 # 1 if week is even, 0 if week
 for i in range(5):
     played += previous[i*8 + 4*even : i*8 + 4*even + 5]
 
-print(played)
+# ---------------------------------------------------------------
+
+# PARAMETERS FOR DRAWING:
 
 # Divisions
 divisions = ('Quantum', 'Overclocked', 'Processor', 'Circuit', 'Transistor', 'Abacus', 'Babbage', 'Colossus', 'Dragon', 'ENIAC')
@@ -66,6 +79,10 @@ div_x_incr = 1790
 div_y_incr = 790
 bot_y_incr = 140
 
+# ---------------------------------------------------------------
+
+# DRAWING:
+
 # Opening image for drawing.
 leaderboard = Image.open('template/Leaderboard_empty.png')
 draw = ImageDraw.Draw(leaderboard)
@@ -75,9 +92,8 @@ div_font = ImageFont.truetype('MontserratAlternates-Regular.ttf',120)
 bot_font = ImageFont.truetype('MontserratAlternates-Regular.ttf',80)
 
 # Colours.
-div_colour = (255,255,255)
+# div_colour = (255,255,255) # Now using colour_scheme instead
 bot_colour = (0,0,0)
-# TODO Make the division names coloured as well.
 
 # For each divion, draw the division name, and each bot in the division.
 for i, div in enumerate(divisions):
@@ -85,7 +101,7 @@ for i, div in enumerate(divisions):
     # Calculates position for the division text.
     div_pos = (start_x + div_x_incr * (i // 5), start_y + div_y_incr * (i % 5))
     # Draws the division name.
-    draw.text(xy=div_pos, text=div, fill=div_colour, font=div_font)
+    draw.text(xy=div_pos, text=div, fill=colour_scheme[div][0], font=div_font)
 
     # Draws the division emblem at an offset.
     try:
