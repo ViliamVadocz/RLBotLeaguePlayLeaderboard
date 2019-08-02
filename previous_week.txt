@@ -1,5 +1,5 @@
 Self-driving car
-Botimus Prime 2
+Botimus Prime
 ReliefBot
 Atlas
 Wildfire

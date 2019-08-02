@@ -1,7 +1,7 @@
 Self-driving car
-Botimus Prime 2
-Atlas
+Botimus Prime
 Wildfire
+Atlas
 ReliefBot
 Diablo
 GarbageBot
