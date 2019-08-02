@@ -67,8 +67,8 @@ div_y_incr = 790
 bot_y_incr = 140
 
 # Opening image for drawing.
-image = Image.open('Leaderboard_empty.png')
-draw = ImageDraw.Draw(image)
+leaderboard = Image.open('template/Leaderboard_empty.png')
+draw = ImageDraw.Draw(leaderboard)
 
 # Fonts.
 div_font = ImageFont.truetype('MontserratAlternates-Regular.ttf',120)
@@ -77,6 +77,7 @@ bot_font = ImageFont.truetype('MontserratAlternates-Regular.ttf',80)
 # Colours.
 div_colour = (255,255,255)
 bot_colour = (0,0,0)
+# TODO Make the division names coloured as well.
 
 # For each divion, draw the division name, and each bot in the division.
 for i, div in enumerate(divisions):
@@ -93,7 +94,7 @@ for i, div in enumerate(divisions):
         # Calculates position of emblem.
         emb_pos = (div_pos[0] + emb_x_offset, div_pos[1] + emb_y_offset)
         # Pastes emblem onto image.
-        image.paste(emblem, emb_pos, emblem)
+        leaderboard.paste(emblem, emb_pos, emblem)
     except:
         # Sends error message if it can't find the emblem.
         print(f'ERROR: Missing emblem for {div}.')
@@ -113,21 +114,21 @@ for i, div in enumerate(divisions):
         # Pastes appropriate symbol
         if bot in new_bots:
             symbol = Image.open(f'symbols/{div}_new.png')
-            image.paste(symbol, sym_pos, symbol)
+            leaderboard.paste(symbol, sym_pos, symbol)
 
         elif bot in moved_up:
             symbol = Image.open(f'symbols/{div}_up.png')
-            image.paste(symbol, sym_pos, symbol)
+            leaderboard.paste(symbol, sym_pos, symbol)
 
         elif bot in moved_down:
             symbol = Image.open(f'symbols/{div}_down.png')
-            image.paste(symbol, sym_pos, symbol)
+            leaderboard.paste(symbol, sym_pos, symbol)
 
         elif bot in played:
             symbol = Image.open(f'symbols/{div}_played.png')
-            image.paste(symbol, sym_pos, symbol)
+            leaderboard.paste(symbol, sym_pos, symbol)
 
 
 # Shows and saves the image.
-image.show()
-image.save('Leaderboard.png')
+leaderboard.show()
+leaderboard.save('Leaderboard.png', 'PNG')
