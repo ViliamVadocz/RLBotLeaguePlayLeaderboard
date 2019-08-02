@@ -1,4 +1,4 @@
-Self Driving Car
+Self-driving car
 Botimus Prime 2
 ReliefBot
 Atlas

@@ -1,8 +1,8 @@
-Self Driving Car
+Self-driving car
 Botimus Prime 2
-ReliefBot
 Atlas
 Wildfire
+ReliefBot
 Diablo
 GarbageBot
 Beast from the East
