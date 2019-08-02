@@ -32,6 +32,16 @@ for bot in current:
         elif current.index(bot) > previous.index(bot):
             moved_down.append(bot)
 
+# Creates list for tracking who played last week.
+played = []
+# Gets last week's number and determines if it's odd or even.
+even = (int(input('Last week number: ')) + 1) % 2 # 1 if week is even, 0 if week is odd.
+# Adds bots who played last week to list.
+for i in range(5):
+    played += previous[i*8 + 4*even : i*8 + 4*even + 5]
+
+print(played)
+
 # Divisions
 divisions = ('Quantum', 'Overclocked', 'Processor', 'Circuit', 'Transistor', 'Abacus', 'Babbage', 'Colossus', 'Dragon', 'ENIAC')
 
@@ -102,16 +112,20 @@ for i, div in enumerate(divisions):
 
         # Pastes appropriate symbol
         if bot in new_bots:
-            symbol = Image.open('symbols/new.png')
-            image.paste(symbol,sym_pos,symbol)
+            symbol = Image.open(f'symbols/{div}_new.png')
+            image.paste(symbol, sym_pos, symbol)
 
         elif bot in moved_up:
-            symbol = Image.open('symbols/up.png')
-            image.paste(symbol,sym_pos,symbol)
+            symbol = Image.open(f'symbols/{div}_up.png')
+            image.paste(symbol, sym_pos, symbol)
 
         elif bot in moved_down:
-            symbol = Image.open('symbols/down.png')
-            image.paste(symbol,sym_pos,symbol)
+            symbol = Image.open(f'symbols/{div}_down.png')
+            image.paste(symbol, sym_pos, symbol)
+
+        elif bot in played:
+            symbol = Image.open(f'symbols/{div}_played.png')
+            image.paste(symbol, sym_pos, symbol)
 
 
 # Shows and saves the image.
