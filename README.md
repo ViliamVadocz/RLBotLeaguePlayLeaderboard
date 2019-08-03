@@ -14,5 +14,6 @@ Advanced options:
 - Modify the palette in `symbols.py` for each division. (This won't change the tiles, only symbols and text.)
 - Change the description of each symbol in `symbols.py`. (Used for creating legend.)
 - Add or change the division emblems in the subdirectory `emblems`. Name should be the same as division. (Size 300x300)
+- Change drawing parameters in `leaderboard.py` to move things around.
 
 Feel free to leave feedback. Enjoy!
