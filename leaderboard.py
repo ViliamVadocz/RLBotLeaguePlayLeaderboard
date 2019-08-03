@@ -5,13 +5,14 @@ from moviepy.editor import ImageClip
 
 from symbols import palette
 
-def generate_leaderboard(current_week, background=True, make_clip=False, duration=5.0, frames_per_second=60):
+def generate_leaderboard(current_week, extra=False, background=True, make_clip=False, duration=5.0, frames_per_second=60):
     """ Creates a leaderboard for league play.
     
     Arguments:
         current_week {int} -- Current week's number, e.g. 1, 2, 3, etc.
     
     Keyword Arguments:
+        extra {bool} -- Whether to include the next 5 divisions. (default: {False})
         background {bool} -- Whether to use a background for the leaderboard. (default: {True})
         make_clip {bool} -- Whether to also make an mp4 clip. (default: {False})
         duration {float} -- Duration of the clip in seconds. (default: {5})
@@ -73,7 +74,7 @@ def generate_leaderboard(current_week, background=True, make_clip=False, duratio
     # PARAMETERS FOR DRAWING:
 
     # Divisions
-    divisions = ('Quantum', 'Overclocked', 'Processor', 'Circuit', 'Transistor', 'Abacus', 'Babbage', 'Colossus', 'Dragon', 'ENIAC')
+    divisions = ('Quantum', 'Overclocked', 'Processor', 'Circuit', 'Transistor', 'Abacus', 'Babbage', 'Colossus', 'Dragon', 'ENIAC', 'Ferranti')
 
     '''
     Each division has the origin at the top left corner of their emblem.
@@ -102,7 +103,7 @@ def generate_leaderboard(current_week, background=True, make_clip=False, duratio
     bot_y_offset = 300
 
     # Offsets for the symbols from the bot name position.
-    sym_x_offset = 1300
+    sym_x_offset = 1295
     sym_y_offset = 5
 
     # Incremenets for x and y.
@@ -116,14 +117,21 @@ def generate_leaderboard(current_week, background=True, make_clip=False, duratio
 
     # Opening image for drawing.
     if background:
-        leaderboard = Image.open('templates/Leaderboard_empty.png')
+        if extra:
+            leaderboard = Image.open('templates/Leaderboard_extra_empty.png')
+        else:
+            leaderboard = Image.open('templates/Leaderboard_empty.png')
     else:
-        leaderboard = Image.open('templates/Leaderboard_no_background.png')
+        if extra:
+            leaderboard = Image.open('templates/Leaderboard_extra_no_background.png')
+        else:
+            leaderboard = Image.open('templates/Leaderboard_no_background.png')
+
     draw = ImageDraw.Draw(leaderboard)
 
     # Fonts for division titles and bot names.
     div_font = ImageFont.truetype('MontserratAlternates-Medium.ttf',120)
-    bot_font = ImageFont.truetype('MontserratAlternates-Regular.ttf',80)
+    bot_font = ImageFont.truetype('MontserratAlternates-Medium.ttf',80)
 
     # Bot name colour.
     bot_colour = (0,0,0)
@@ -175,7 +183,6 @@ def generate_leaderboard(current_week, background=True, make_clip=False, duratio
             elif bot in played:
                 symbol = Image.open(f'symbols/{div}_played.png')
                 leaderboard.paste(symbol, sym_pos, symbol)
-
 
     # Shows and saves the image.
     leaderboard.show()
