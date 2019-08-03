@@ -75,17 +75,31 @@ def generate_leaderboard(current_week, background=True, make_clip=False, duratio
     # Divisions
     divisions = ('Quantum', 'Overclocked', 'Processor', 'Circuit', 'Transistor', 'Abacus', 'Babbage', 'Colossus', 'Dragon', 'ENIAC')
 
+    '''
+    Each division has the origin at the top left corner of their emblem.
+
+    Offsets:
+        title offsets determine where the division title is drawn relative to the emblem.
+        bot offsets determine where bot names are drawn relative to the emblem.
+        sym offsets determine where the symbol is placed relative to the bot name.
+
+    Increments:
+        div increments are how much to move the origin between each division.
+        bot increment is how much to move down for each bot name.
+
+    '''
+
     # Start positions for drawing.
-    start_x = 540
-    start_y = 90
+    start_x = 0
+    start_y = 0
 
     # Division emblem offsets from the division name position.
-    emb_x_offset = -530
-    emb_y_offset = -90
+    title_x_offset = 350
+    title_y_offset = 85
 
     # Bot name offsets from the division name position.
-    bot_x_offset = -340
-    bot_y_offset = 210
+    bot_x_offset = 200
+    bot_y_offset = 300
 
     # Offsets for the symbols from the bot name position.
     sym_x_offset = 1300
@@ -117,30 +131,29 @@ def generate_leaderboard(current_week, background=True, make_clip=False, duratio
     # For each divion, draw the division name, and each bot in the division.
     for i, div in enumerate(divisions):
 
-        # Calculates position for the division text.
+        # Calculates position for the division.
         div_pos = (start_x + div_x_incr * (i // 5), start_y + div_y_incr * (i % 5))
-        # Draws the division name.
-        draw.text(xy=div_pos, text=div, fill=palette[div][0], font=div_font)
 
-        # Draws the division emblem at an offset.
+        # Draws the division emblem.
         try:
             # Opens the division emblem image.
             emblem = Image.open(f'emblems/{div}.png')
-            # Calculates position of emblem.
-            emb_pos = (div_pos[0] + emb_x_offset, div_pos[1] + emb_y_offset)
             # Pastes emblem onto image.
-            leaderboard.paste(emblem, emb_pos, emblem)
+            leaderboard.paste(emblem, div_pos, emblem)
         except:
             # Sends error message if it can't find the emblem.
             print(f'ERROR: Missing emblem for {div}.')
+
+        # Draws the division title at an offset.
+        title_pos = (div_pos[0] + title_x_offset, div_pos[1] + title_y_offset)
+        draw.text(xy=title_pos, text=div, fill=palette[div][0], font=div_font)
 
         # Loops through the four bots in the division and draws each.
         bot_index = i * 4
         for ii, bot in enumerate(current[bot_index : bot_index+4]):
 
-            # Calculates position for the bot.
+            # Calculates position for the bot name and draws it.
             bot_pos = (div_pos[0] + bot_x_offset, div_pos[1] + bot_y_offset + ii * bot_y_incr)
-            # Draws the bot name.
             draw.text(xy= bot_pos, text=bot, fill=bot_colour, font=bot_font)
 
             # Calculates symbol position.
