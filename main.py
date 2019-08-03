@@ -1,7 +1,6 @@
 '''Generates the leader-board.'''
 
 from PIL import Image, ImageDraw, ImageFont
-from symbol_maker import colour_scheme
 
 # ---------------------------------------------------------------
 
@@ -45,8 +44,11 @@ for bot in current:
 
 # Creates list for tracking who played last week.
 played = []
+
 # Gets last week's number and determines if it's odd or even.
-even = (int(input('Last week number: ')) + 1) % 2 # 1 if week is even, 0 if week is odd.
+last_week = 1 #int(input('Last week's number: '))
+even = (last_week + 1) % 2 # 1 if week is even, 0 if week is odd.
+
 # Adds bots who played last week to list.
 for i in range(5):
     played += previous[i*8 + 4*even : i*8 + 4*even + 5]
@@ -57,6 +59,9 @@ for i in range(5):
 
 # Divisions
 divisions = ('Quantum', 'Overclocked', 'Processor', 'Circuit', 'Transistor', 'Abacus', 'Babbage', 'Colossus', 'Dragon', 'ENIAC')
+
+# Importing pallete. Also generates the symbols because all of it is loaded on import.
+from setup import palette
 
 # Start positions for drawing.
 start_x = 540
@@ -84,7 +89,7 @@ bot_y_incr = 140
 # DRAWING:
 
 # Opening image for drawing.
-leaderboard = Image.open('template/Leaderboard_empty.png')
+leaderboard = Image.open('templates/Leaderboard_empty.png')
 draw = ImageDraw.Draw(leaderboard)
 
 # Fonts.
@@ -92,7 +97,7 @@ div_font = ImageFont.truetype('MontserratAlternates-Regular.ttf',120)
 bot_font = ImageFont.truetype('MontserratAlternates-Regular.ttf',80)
 
 # Colours.
-# div_colour = (255,255,255) # Now using colour_scheme instead
+# div_colour = (255,255,255) # Now using palette instead
 bot_colour = (0,0,0)
 
 # For each divion, draw the division name, and each bot in the division.
@@ -101,11 +106,11 @@ for i, div in enumerate(divisions):
     # Calculates position for the division text.
     div_pos = (start_x + div_x_incr * (i // 5), start_y + div_y_incr * (i % 5))
     # Draws the division name.
-    draw.text(xy=div_pos, text=div, fill=colour_scheme[div][0], font=div_font)
+    draw.text(xy=div_pos, text=div, fill=palette[div][0], font=div_font)
 
     # Draws the division emblem at an offset.
     try:
-        # Opens the divicion emblem image.
+        # Opens the division emblem image.
         emblem = Image.open(f'emblems/{div}.png')
         # Calculates position of emblem.
         emb_pos = (div_pos[0] + emb_x_offset, div_pos[1] + emb_y_offset)
