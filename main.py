@@ -6,7 +6,7 @@ import leaderboard
 # PARAMETERS:
 
 # Current week's number.
-current_week = 2
+current_week = 3
 
 # Extra 5 divisions?
 extra = False
