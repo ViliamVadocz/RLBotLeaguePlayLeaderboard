@@ -149,8 +149,8 @@ def generate_leaderboard(current_week, extra=False, background=True, make_clip=F
             # Pastes emblem onto image.
             leaderboard.paste(emblem, div_pos, emblem)
         except:
-            # Sends error message if it can't find the emblem.
-            print(f'ERROR: Missing emblem for {div}.')
+            # Sends warning message if it can't find the emblem.
+            print(f'WARNING: Missing emblem for {div}.')
 
         # Draws the division title at an offset.
         title_pos = (div_pos[0] + title_x_offset, div_pos[1] + title_y_offset)
