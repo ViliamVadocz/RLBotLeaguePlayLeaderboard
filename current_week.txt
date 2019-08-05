@@ -2,26 +2,26 @@ Self-driving car
 Botimus Prime
 Wildfire
 Atlas
+Cartana
+Beast from the East
+GarbageBot
 ReliefBot
 Diablo
-GarbageBot
-Beast from the East
-Cartana
 Air Bud
 CunningBot
 Allstar
-Levi
-NomBot_v1.5
-Gibbus
-Skybot
 Kamael
+NomBot
+SkyBot
+Levi
+Gibbus
 Psyonix Pro
 AdversityBot
 Boolean Algebra Calf
-JoeyBot
 Anarchy
+Testing
+Tracer
+JoeyBot
 NatureBot V1
-tracer
-testing
 Gosling
 NV Derevo

@@ -1,24 +1,27 @@
 Self-driving car
 Botimus Prime
-ReliefBot
-Atlas
 Wildfire
+Atlas
+ReliefBot
 Diablo
 GarbageBot
 Beast from the East
-Levi
 Cartana
+Air Bud
 CunningBot
 Allstar
-Air Bud
-NomBot_v1.5
+Levi
+NomBot
 Gibbus
-Skybot
-Boolean Algebra Calf
-AdversityBot
-JoeyBot
-Psyonix Pro
+SkyBot
 Kamael
+Psyonix Pro
+AdversityBot
+Boolean Algebra Calf
+JoeyBot
 Anarchy
 NatureBot V1
-tracer
+Tracer
+Testing
+Gosling
+NV Derevo
