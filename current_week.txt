@@ -25,3 +25,7 @@ JoeyBot
 NatureBot V1
 Gosling
 NV Derevo
+MechJeb
+Beetle
+Gas Gas Gas
+Zoomelette
