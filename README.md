@@ -6,7 +6,7 @@ Guide:
 - Copy and paste the previous week's standings into `previous_week.txt`.
 - Copy and paste this week's standings into `current_week.txt`.
 - Open `main.py` and set `current_week` to the current week's number. (You can also change other parameters.)
-- Run `main.py`.
+- Run `main.py` either through a command prompt or by running `run.bat`.
 
 Advanced options:
 
