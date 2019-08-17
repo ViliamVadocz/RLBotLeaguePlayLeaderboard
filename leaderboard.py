@@ -63,11 +63,11 @@ def generate_leaderboard(current_week, extra=False, background=True, make_clip=F
     played = []
 
     # Takes current week's number and determines if it's odd or even.
-    even = current_week % 2 # 1 if week is even, 0 if week is odd.
+    odd = current_week % 2 # 0 if week is even, 1 if week is odd.
 
     # Adds bots who played last week to list.
     for i in range(5):
-        played += previous[i*8 + 4*even : i*8 + 4*even + 5]
+        played += previous[i*8 + 4*odd : i*8 + 4*odd + 5]
 
     # ---------------------------------------------------------------
 
